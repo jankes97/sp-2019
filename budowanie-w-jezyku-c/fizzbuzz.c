@@ -1,23 +1,29 @@
 #include <math.h>
 #include <stdio.h>
 
-int main(void)
+void fizzbuzz(int i)
 {
-    int i;
-
-    for (i=1; i<=100; i=i+1)
+    for (i = 1; i <= 100; i = i + 1)
     {
-        if (i == 3 || i%3==0)
+        if (i == 3 || i % 3 == 0)
         {
-            printf("Fizz");
+            printf("Fizz, ");
         }
-        if (i == 5 || i%5==0)
+        if (i == 5 || i % 5 == 0)
         {
-            printf("Buzz");
+            printf("Buzz, ");
         }
-        else
+        if (i % 3 != 0 && i % 5 != 0)
         {
             printf("%d, ", i);
         }
     }
+}
+
+int main(void)
+{
+    int i;
+
+    fizzbuzz(i);
+    printf("\n");
 }
