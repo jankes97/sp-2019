@@ -38,11 +38,11 @@ int main()
     nt = 0;
     nl = 0;
     while ((c = getchar()) != EOF)
-        if (c == ' ')
+        if (c == ' ') // -> "spacja"
             ++nb;
-        else if (c == '\t')
+        else if (c == '\t') // \t -> znak tabulacji "tab"
             ++nt;
-        else if (c == '\n')
+        else if (c == '\n') // \n -> znak nowej linii "enter" 
             ++nl;
     printf("spacja: %d  tab: %d  enter: %d\n", nb, nt, nl);
     return 0;

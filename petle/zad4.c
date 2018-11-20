@@ -1,14 +1,10 @@
 /* 4. Napisz program, który wyliczy sumę liczb naturalnych od 1 do liczby n podanej przez użytkownika. Kiedy użytkownik poda liczbę mniejszą niż 1, to program powinien wypisać stosowny komunikat o błędzie. */
 
 #include <stdio.h>
-int main()
+
+void Suma(int i, int n, int x)
 {
-    int i, n, x;
-    x = 0;
-    n = 1;
-    printf("Podaj liczbę: ");
-    scanf("%d", &i);
-    if (i<0)
+    if (i < 0)
     {
         printf("Błędne dane.\n");
     }
@@ -22,5 +18,14 @@ int main()
         }
         printf("%d\n", x);
     }
-    
+}
+
+int main(void)
+{
+    int i, n, x;
+    x = 0;
+    n = 1;
+    printf("Podaj liczbę: ");
+    scanf("%d", &i);
+    Suma(i, n, x);
 }

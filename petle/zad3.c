@@ -2,16 +2,32 @@
 
 #include <stdio.h>
 #include <math.h>
-int main()
+
+void pomiedzy(int a, int b, int x)
+{
+    if (a < b)
+    {
+        for (x = a + 1; x < b; x++)
+        {
+            if (x == b - 1)
+            {
+                printf("%d \n", x);
+            }
+            else
+            {
+                printf("%d, ", x);
+            }
+        }
+    }
+}
+
+
+int main(void)
 {
     int a, b, x;
     printf("Podaj liczbę początkową:\n");
     scanf("%d", &a);
     printf("Podaj liczbę końcową:\n");
     scanf("%d", &b);
-    if (a < b)
-    {
-        for (x = a + 1; x < b; x++)
-            printf("%d, ", x);
-    }
+    pomiedzy(a,b,x);
 }
