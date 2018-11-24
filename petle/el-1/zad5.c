@@ -30,7 +30,7 @@ i nowego wiersza */
 #include <stdio.h>
 
 
-int main()
+int main(void)
 {
     int c;
     int nb, nt, nl;
