@@ -10,7 +10,9 @@
 
 void fizzbuzz(int i)
 {
-    for (i = 1; i <= 100; i = i + 1)
+    int z = 20;
+
+    for (i = 1; i <= z; i = i + 1)
     {
         if (i == 3 || i % 3 == 0)
         {
@@ -18,7 +20,7 @@ void fizzbuzz(int i)
         }
         if (i == 5 || i % 5 == 0)
         {
-            if(i == 100)
+            if(i == z)
             {
                 printf("Buzz ");
             }
