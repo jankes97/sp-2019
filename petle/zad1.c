@@ -3,14 +3,17 @@
 #include <stdio.h>
 #include <math.h>
 
-int main()
+void potegi(int x)
 {
-    int x = 2;
-    
     while (x <= 2010)
     {
         printf("%d\n", x);
         x = x * 2;
     }
-    return 0;
+}
+
+int main(void)
+{
+    int x = 2;
+    potegi(x);
 }

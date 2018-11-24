@@ -38,9 +38,7 @@ void znak(int x, int y, int z)
 
 int main()
 {
-
     int x, y, z;
 
     znak(x,y,z);
-    return 0;
 }

@@ -25,7 +25,9 @@ int main(void)
     int i, n, x;
     x = 0;
     n = 1;
+
     printf("Podaj liczbę: ");
     scanf("%d", &i);
+    
     Suma(i, n, x);
 }

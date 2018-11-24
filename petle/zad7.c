@@ -5,6 +5,7 @@
 int main ()
   {
     int i,tab[6], plus;
+
     printf("Podaj liczbe: ");
     for(i=0; i<6; i=i+1)
       {
@@ -19,5 +20,6 @@ int main ()
         }
 
       }
-  printf("liczby to: %d\n",plus);
+
+  printf("Liczba licz dodatnich: %d\n",plus);
   };

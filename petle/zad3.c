@@ -25,9 +25,11 @@ void pomiedzy(int a, int b, int x)
 int main(void)
 {
     int a, b, x;
+
     printf("Podaj liczbę początkową:\n");
     scanf("%d", &a);
     printf("Podaj liczbę końcową:\n");
     scanf("%d", &b);
+    
     pomiedzy(a,b,x);
 }
