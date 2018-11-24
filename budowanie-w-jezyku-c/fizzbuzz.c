@@ -10,7 +10,7 @@
 
 void fizzbuzz(int i)
 {
-    int z = 20;
+    int z = 100;
 
     for (i = 1; i <= z; i = i + 1)
     {
