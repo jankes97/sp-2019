@@ -1,3 +1,10 @@
+/* FIZZBUZZ
+    Wypisz wszystkie liczby od 1 do 100
+    Jeśli liczba jest podzielna przez trzy wypisz “Fizz“
+    Jeśli liczba jest podzielna przez pięć wypisz “Buzz“
+    Jeśli liczba jest podzielna przez trzy i pięć wypisz “FizzBuzz“
+*/ 
+
 #include <math.h>
 #include <stdio.h>
 
@@ -11,7 +18,14 @@ void fizzbuzz(int i)
         }
         if (i == 5 || i % 5 == 0)
         {
-            printf("Buzz, ");
+            if(i == 100)
+            {
+                printf("Buzz ");
+            }
+            else
+            {
+                printf("Buzz, ");
+            }
         }
         if (i % 3 != 0 && i % 5 != 0)
         {
