@@ -9,25 +9,21 @@
 * * * * * * * *
  * * * * * * * *
 */
+
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
-#include <pthread.h>
 
-void znak(int x, int y, int z)
+void znak(int x, int y)
 {
     for (x = 1; x <= 8; x++)
     {
-        if (x % 2 != 0)
+        for (y = 1; y <= 8; y++)
         {
-            for (y = 1; y <= 8; y++)
+            if (x % 2 != 0)
             {
                 printf("* ");
             }
-        }
-        else
-        {
-            for (z = 1; z <= 8; z++)
+            else
             {
                 printf(" *");
             }
@@ -38,7 +34,7 @@ void znak(int x, int y, int z)
 
 int main()
 {
-    int x, y, z;
+    int x, y;
 
-    znak(x,y,z);
+    znak(x,y);
 }
