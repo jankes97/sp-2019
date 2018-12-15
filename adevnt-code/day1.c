@@ -31,26 +31,11 @@ void frequency()
         tab[i] = answer;
         i++;
     }
-    //printf("Odpowiedź to: %d\n", answer);
+    printf("Odpowiedź to: %d\n", answer);
 
 
     //sortowanie(tab[995]);
 
-    /*int tab2[995] = { };
-   // printf("tab2[6] = %d\n", tab[6]);
-    for (w = 0; w <= 995; w++)
-    {
-        for (e = 0; e <= 995; e++)
-        {
-            if (tab[w] == tab2[e])
-            {
-                printf("Odp 2: %d\n", tab[w]);
-            }
-        }
-        tab2[w] = tab[w];
-
-        //printf("tab[%d] = %d | tab2[%d] = %d\n", w, tab[w], w, tab2[w] );
-    }*/
 
     int t;
     for (int j = 0; j < 996; j++)
