@@ -1,94 +1,91 @@
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 #include <math.h>
+#define PLIK "dane.txt"
 
 void frequency();
-void sortowanie();
+void twice();
 
-int main(void)
+int main(int argc, char **argv)
 {
-    int x, answer, a;
-   // int tab[995] = {};
-
-    frequency(a, answer, x);
-    
-    //sortowanie(tab[995]);
-
+    frequency();
+    twice();
 }
 
-void frequency()
+void frequency(void)
 {
-    int x, i, a, answer;
-    //int liczba;
-    int tab[995] = { };
-    //int e, w;
+    FILE *dane;
+    FILE *odp;
+    
 
-    for (x = 1; x <= 996; x++)
+    int a, answer;
+
+    dane = fopen(PLIK, "r");
+    answer = 0;
+    while (fscanf(dane, "%d", &a) != EOF)
     {
-        scanf("%d", &a);
-
         answer = answer + a;
+    }
+    fclose(dane);
 
-        tab[i] = answer;
+    odp = fopen("odp1-1.txt", "w+");
+    fprintf(odp, "Odpowiedź to: %d\n", answer);
+    fclose(odp);
+    
+}
+
+void twice(void)
+{
+    FILE *dane;
+    FILE *odp2;
+
+    int contains(int *arr, int size, int currFreq)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (arr[i] == currFreq)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    dane = fopen(PLIK, "r");
+    char buff[100];
+    int n = 996;
+    int values[n];
+    int *arr = (int *)malloc(1000000 * sizeof(int));
+    int size = 0;
+    char *t = fgets(buff, 100, dane);
+    int i = 0;
+    while (t != NULL)
+    {
+        int x = atoi(buff);
+        values[i] = x;
+        t = fgets(buff, 100, dane);
         i++;
     }
-    printf("Odpowiedź to: %d\n", answer);
+    fclose(dane);
 
+    int currFreq = 0;
+    i = 0;
 
-    //sortowanie(tab[995]);
-
-
-    int t;
-    for (int j = 0; j < 996; j++)
+    while (1)
     {
-        for (i = 0; i < 995; i++)
+        if (contains(arr, size, currFreq))
         {
-            if (tab[i] > tab[i + 1])
-            {
-                t = tab[i];
-                tab[i] = tab[i + 1];
-                tab[i + 1] = t;
-            }
-           
+            odp2 = fopen("odp1-2.txt", "w+");
+            fprintf(odp2,"currFreq = %d was first to be seen twice\n", currFreq);
+            fclose(odp2);
+            exit(0);
         }
-    }
-    for (int h = 0; h <= 995; h++)
-    {
-        printf("%d\n", tab[h]);
-        if (tab[i] == tab[i + 1])
-        {
-           //printf("!!! TUTAJ: TAB[%d] == %d !!!!!\n", i, tab[i]);
-        }
+        arr[size] = currFreq;
+        size++;
+
+        currFreq += values[i];
+        i = (i + 1) % n;
     }
 }
-/*
-void sortowanie(int tab[995])
-{
-    int t;
-    int i, j;
-    //int tab2;
-
-    for (int h = 0; h <= 995; h++)
-    {
-        printf("tab[%d] = %d\n", h, tab[h]);
-    }
-
-    for (j = 0; j < 996; j++)
-    {
-        for (i = 0; i < 995; i++)
-        {
-            if (tab[i] > tab[i + 1])
-            {
-                t = tab[i];
-                tab[i] = tab[i + 1];
-                tab[i + 1] = t;
-            }
-            if (tab[i] == tab[i+1])
-            {
-                printf("!!! TUTAJ: TAB[%d] == %d !!!!!\n", i, tab[i]);
-            }
-        }
-    }
-  
-}*/
-
-   
