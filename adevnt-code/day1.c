@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-#define PLIK "dane.txt"
+#define PLIK "day-1.txt"
 
 void frequency();
 void twice();
