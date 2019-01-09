@@ -21,7 +21,7 @@ int frequency(int ile)
   }
   fclose(dane);
 
-  odp = fopen("odp1-1.txt", "w+");
+  odp = fopen("freq.txt", "w+");
   fprintf(odp, "Odpowiedź to: %d\n", answer);
   fclose(odp);
 
@@ -69,7 +69,7 @@ int twice(int ile)
   {
     if (contains(arr, size, currFreq))
     {
-      odp2 = fopen("odp1-2.txt", "w+");
+      odp2 = fopen("twice.txt", "w+");
       fprintf(odp2, "currFreq = %d was first to be seen twice\n", currFreq);
       fclose(odp2);
       printf("currFreq = %d\n", currFreq);
