@@ -3,89 +3,89 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-#define PLIK "day-1.txt"
+#define PLIK "dane1.txt"
 
-void frequency();
-void twice();
-
-int main(int argc, char **argv)
+int frequency(int ile)
 {
-    frequency();
-    twice();
+  FILE *dane;
+  FILE *odp;
+
+  int a, answer;
+
+  dane = fopen(PLIK, "r");
+  answer = 0;
+  while (fscanf(dane, "%d", &a) != EOF)
+  {
+    answer = answer + a;
+    ile++;
+  }
+  fclose(dane);
+
+  odp = fopen("odp1-1.txt", "w+");
+  fprintf(odp, "Odpowiedź to: %d\n", answer);
+  fclose(odp);
+
+  return ile;
 }
 
-void frequency(void)
+int twice(int ile)
 {
-    FILE *dane;
-    FILE *odp;
-    
+  FILE *dane;
+  FILE *odp2;
 
-    int a, answer;
-
-    dane = fopen(PLIK, "r");
-    answer = 0;
-    while (fscanf(dane, "%d", &a) != EOF)
+  int contains(int *arr, int size, int currFreq)
+  {
+    for (int i = 0; i < size; i++)
     {
-        answer = answer + a;
+      if (arr[i] == currFreq)
+      {
+        return 1;
+      }
     }
-    fclose(dane);
+    return 0;
+  }
 
-    odp = fopen("odp1-1.txt", "w+");
-    fprintf(odp, "Odpowiedź to: %d\n", answer);
-    fclose(odp);
-    
+  dane = fopen(PLIK, "r");
+  char buff[100];
+  int n = ile;
+  int values[n];
+  int *arr = (int *)malloc(1000000 * sizeof(int));
+  int size = 0;
+  char *t = fgets(buff, 100, dane);
+  int i = 0;
+  while (t != NULL)
+  {
+    int x = atoi(buff);
+    values[i] = x;
+    t = fgets(buff, 100, dane);
+    i++;
+  }
+  fclose(dane);
+
+  int currFreq = 0;
+  i = 0;
+
+  while (1)
+  {
+    if (contains(arr, size, currFreq))
+    {
+      odp2 = fopen("odp1-2.txt", "w+");
+      fprintf(odp2, "currFreq = %d was first to be seen twice\n", currFreq);
+      fclose(odp2);
+      printf("currFreq = %d\n", currFreq);
+      exit(0);
+    }
+    arr[size] = currFreq;
+    size++;
+
+    currFreq += values[i];
+    i = (i + 1) % n;
+  }
 }
 
-void twice(void)
+int main()
 {
-    FILE *dane;
-    FILE *odp2;
-
-    int contains(int *arr, int size, int currFreq)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            if (arr[i] == currFreq)
-            {
-                return 1;
-            }
-        }
-        return 0;
-    }
-
-    dane = fopen(PLIK, "r");
-    char buff[100];
-    int n = 996;
-    int values[n];
-    int *arr = (int *)malloc(1000000 * sizeof(int));
-    int size = 0;
-    char *t = fgets(buff, 100, dane);
-    int i = 0;
-    while (t != NULL)
-    {
-        int x = atoi(buff);
-        values[i] = x;
-        t = fgets(buff, 100, dane);
-        i++;
-    }
-    fclose(dane);
-
-    int currFreq = 0;
-    i = 0;
-
-    while (1)
-    {
-        if (contains(arr, size, currFreq))
-        {
-            odp2 = fopen("odp1-2.txt", "w+");
-            fprintf(odp2,"currFreq = %d was first to be seen twice\n", currFreq);
-            fclose(odp2);
-            exit(0);
-        }
-        arr[size] = currFreq;
-        size++;
-
-        currFreq += values[i];
-        i = (i + 1) % n;
-    }
+  int ile = 0;
+  ile = frequency(ile);
+  twice(ile);
 }
