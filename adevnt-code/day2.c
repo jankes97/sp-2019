@@ -1,7 +1,6 @@
 /*
-    1) Wczytanie danych z plików i zliczyć te litery, które są podwójne i potrójne. Jeśle w jednym wieszy jest powtarza się podwójna lub potrójna to liczy jako 1 raz występowania, a nie 2razy;
-    
-
+    1) Wczytanie danych z plików i zliczyć te litery, które są podwójne i potrójne.
+    Jeśle w jednym wieszy jest powtarza się podwójna lub potrójna to liczy jako 1 raz występowania, a nie 2razy;
 */
 
 #include <stdio.h>
