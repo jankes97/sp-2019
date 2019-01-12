@@ -13,7 +13,7 @@ Jeśle w jednym wieszy jest powtarza się podwójna lub potrójna to liczy jako 
 
 ## DAY19
 
-Załóżmy na przykład, że masz następujący program:
+1) Załóżmy na przykład, że masz następujący program:
 
 ip 0
 seti 5 0 1
@@ -53,8 +53,7 @@ Wskaźnik instrukcji jest inkrementowany, co powoduje, że wskazuje on program, 
 
 Jaka wartość pozostaje w rejestrze 0, gdy proces w tle zatrzymuje się?
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Nowy proces w tle natychmiast zamienia się w jego miejsce. Wygląda to identycznie, ale po bliższej inspekcji zauważysz, że tym razem rejestr 0 zaczynał się od wartości 1.
+2) Nowy proces w tle natychmiast zamienia się w jego miejsce. 
+Wygląda to identycznie, ale po bliższej inspekcji zauważysz, że tym razem rejestr 0 zaczynał się od wartości 1.
 
 Jaka wartość pozostaje w rejestrze 0 Jaka wartość pozostaje w rejestrze 0, gdy ten nowy proces działa w tle?
