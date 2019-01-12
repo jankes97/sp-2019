@@ -1,7 +1,6 @@
-/*
- 1) Znaleść sumować liczby w podanym pliku;
- 2) Znaleść pierwszą sumą, która się powtórzyła;
-*\
+//1) Znaleść sumować liczby w podanym pliku;
+// 2) Znaleść pierwszą sumą, która się powtórzyła;
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
