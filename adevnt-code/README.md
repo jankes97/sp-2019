@@ -1,17 +1,17 @@
-#Advent of Code
+# Advent of Code
 Plik day1.c po uruchumieniu, program program pobiera dane z pliku day1-1.txt.
 Plik day2.c po uruchumieniu, program program pobiera dane z pliku day2-1.txt.
 Plik day19.c jest stworzony tylko po dane z pliku day19.txt. Nie pobiera danych! 
 
-##DAY1
+## DAY1
 1) Funkcja: frequency -> Znaleść sumować liczby w podanym pliku;
 2) Funkcja: Twice -> Znaleść pierwszą sumą, która się powtórzyła;
 
-##DAY2
+## DAY2
 1) Fuknkcja: sprawdzanie -> Wczytanie danych z plików i zliczyć te litery, które są podwójne i potrójne. 
 Jeśle w jednym wieszy jest powtarza się podwójna lub potrójna to liczy jako 1 raz występowania, a nie 2razy;
 
-##DAY19
+## DAY19
 
 Załóżmy na przykład, że masz następujący program:
 
