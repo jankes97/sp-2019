@@ -1,0 +1,5 @@
+CFLAGS = -Wall -std=c11
+LDLIBS = -lm
+
+clean :
+  rm -f zad4 zad5
