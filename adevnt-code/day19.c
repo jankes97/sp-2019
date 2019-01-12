@@ -1,15 +1,15 @@
 /*
 #ip 3
-addi 3 16 3   r3=r3+16
-seti 1 6 5	  r1=1 (pierwsza zostaje, druga usun) 
+addi 3 16 3 -> r3=r3+16
+seti 1 6 5 -> r1=1 (pierwsza zostaje, druga usun) 
 seti 1 8 2	      
-mulr 5 2 1	  r1=r5*r2
-eqrr 1 4 1	  r1=r1==r4
-addr 1 3 3    r3=r1+r3
+mulr 5 2 1 -> r1=r5*r2
+eqrr 1 4 1 -> r1=r1==r4
+addr 1 3 3 -> r3=r1+r3
 addi 3 1 3
 addr 5 0 0
 addi 2 1 2
-gtrr 2 4 1	  r1=r2>r4
+gtrr 2 4 1 -> r1=r2>r4
 addr 3 1 3
 seti 2 3 3
 addi 5 1 5
@@ -20,14 +20,14 @@ mulr 3 3 3
 addi 4 2 4
 mulr 4 4 4
 mulr 3 4 4
-muli 4 11 4  r4=r4*11
+muli 4 11 4 -> r4=r4*11
 addi 1 6 1
 mulr 1 3 1
 addi 1 10 1
 addr 4 1 4
 addr 3 0 3
 seti 0 0 3
-setr 3 9 1    r1=r3
+setr 3 9 1 -> r1=r3
 mulr 1 3 1
 addr 3 1 1
 mulr 3 1 1
