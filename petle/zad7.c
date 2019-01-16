@@ -2,24 +2,29 @@
 
 #include <stdio.h>
 
-int main ()
+void dodatnie(void);
+
+int main(void)
+{
+  dodatnie();
+}
+void dodatnie()
+{
+  int i, tab[6], plus;
+
+  printf("Podaj liczbe: ");
+  for (i = 0; i < 6; i = i + 1)
   {
-    int i,tab[6], plus;
+    scanf("%d", &tab[i]);
+  }
+  plus = 0;
+  for (i = 0; i < 6; i = i + 1)
+  {
+    if (tab[i] > 0)
+    {
+      plus++;
+    }
+  }
 
-    printf("Podaj liczbe: ");
-    for(i=0; i<6; i=i+1)
-      {
-        scanf("%d",&tab[i]);
-      }
-      plus=0;
-      for(i=0; i<6; i=i+1)
-      {
-        if(tab[i]>=0)
-        {
-          plus++;
-        }
-
-      }
-
-  printf("Liczba licz dodatnich: %d\n",plus);
-  };
+  printf("Liczba licz dodatnich: %d\n", plus);
+};
