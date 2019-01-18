@@ -1,12 +1,16 @@
-#include <stdbool.h>
-#include <stdlib.h>
-
 bool set_alarm(bool employed, bool vacation) {
 
-    if (employed)
-      if (!vacation)
-        return true;
-    else
+    if (employed == true && vacation == true){
       return false;
+}
 
+    if (employed == false && vacation == true){
+      return false;
+}
+if (employed == false && vacation == false){
+      return false;
+}
+if (employed == true && vacation == false){
+      return true;
+}
 }
