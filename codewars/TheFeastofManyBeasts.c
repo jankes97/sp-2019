@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool feast(const char* beast, const char* dish) {
-
-    // <---- hajime!
+bool feast(const char* beast, const char* dish) 
+{
     if(beast[0] != dish[0])
     {
       return false;
