@@ -92,7 +92,7 @@ int idz_do(char *string, char c)
 int part1(przypisz *przypiszy, int len, int width, int height)
 {
   int paper[width][height]; //tablica wielowymiarowa
-  int overlapping = 0;
+  int ilosc = 0;
   memset(paper, 0, sizeof(paper)); //Wypełnia kolejne bajty w pamięci ustaloną wartością
 
   //Wypełnianie tablicy
@@ -114,11 +114,11 @@ int part1(przypisz *przypiszy, int len, int width, int height)
     {
       if (paper[i][j] > 1)
       {
-        overlapping++;
+        ilosc++;
       }
     }
   }
-  return overlapping;
+  return ilosc;
 }
 
 int part2(przypisz *przypiszy, int len) 
