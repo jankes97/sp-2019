@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define INPUT "day3.txt"
+#define INPUT "day3-1.txt"
 
 //slowa kluczowe, definiowanie typow i struktor 
 typedef struct przypisz
