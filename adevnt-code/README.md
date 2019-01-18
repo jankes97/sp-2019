@@ -1,6 +1,7 @@
 # Advent of Code
  * Plik day1.c po uruchumieniu, program program pobiera dane z pliku day1-1.txt.
  * Plik day2.c po uruchumieniu, program program pobiera dane z pliku day2-1.txt.
+ * Plik day3.c po uruchumieniu, program program pobiera dane z pliku day3-1.txt.
  * Plik day19.c jest stworzony tylko po dane z pliku day19.txt. Nie pobiera danych! 
 
 ## DAY1
