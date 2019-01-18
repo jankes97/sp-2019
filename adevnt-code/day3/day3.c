@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define INPUT "day3.txt"
+#define INPUT "day3-1.txt"
 
-//slowa kluczowe, definiowanie typow i struktor 
+//slowa kluczowe, definiowanie typow i struktor
 typedef struct przypisz
 {
   int id;
@@ -48,10 +48,10 @@ void plik(void) //Pobieranie danych z pliku
 
     //pobiera liczbę w postaci ciągu znaków ASCII, a następnie zwraca jej wartość w formacie int.
     przypisz przypisz = {atoi(line + 1),
-                   atoi(line + idz_do(line, '@') + 1),
-                   atoi(line + idz_do(line, ',') + 1),
-                   atoi(line + idz_do(line, ':') + 2),
-                   atoi(line + idz_do(line, 'x') + 1)};
+                         atoi(line + idz_do(line, '@') + 1),
+                         atoi(line + idz_do(line, ',') + 1),
+                         atoi(line + idz_do(line, ':') + 2),
+                         atoi(line + idz_do(line, 'x') + 1)};
 
     przypiszLen++;
     przypiszy = realloc(przypiszy, sizeof(przypisz) * przypiszLen); //zmienia rozmiar przydzielonego wcześniej bloku pamięci wskazywanego
@@ -96,7 +96,7 @@ int part1(przypisz *przypiszy, int len, int width, int height)
   memset(paper, 0, sizeof(paper)); //Wypełnia kolejne bajty w pamięci ustaloną wartością
 
   //Wypełnianie tablicy
-  for (int i = 0; i < len; i++) 
+  for (int i = 0; i < len; i++)
   {
     for (int j = przypiszy[i].x; j < przypiszy[i].x + przypiszy[i].width; j++)
     {
@@ -108,7 +108,7 @@ int part1(przypisz *przypiszy, int len, int width, int height)
   }
 
   //przeszukanie tablicy
-  for (int i = 0; i < width; i++) 
+  for (int i = 0; i < width; i++)
   {
     for (int j = 0; j < height; j++)
     {
@@ -121,7 +121,7 @@ int part1(przypisz *przypiszy, int len, int width, int height)
   return ilosc;
 }
 
-int part2(przypisz *przypiszy, int len) 
+int part2(przypisz *przypiszy, int len)
 {
   int id = -1;
   for (int i = 0; i < len; i++)
