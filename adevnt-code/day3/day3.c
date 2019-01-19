@@ -91,9 +91,9 @@ int idz_do(char *string, char c)
 
 int part1(przypisz *przypiszy, int len, int width, int height)
 {
-  int paper[width][height]; //tablica wielowymiarowa
-  int ilosc = 0;
-  memset(paper, 0, sizeof(paper)); //Wypełnia kolejne bajty w pamięci ustaloną wartością
+  int tab[width][height]; //tablica wielowymiarowa
+  int okrazenia = 0;
+  memset(tab, 0, sizeof(tab)); //Wypełnia kolejne bajty w pamięci ustaloną wartością
 
   //Wypełnianie tablicy
   for (int i = 0; i < len; i++)
@@ -102,7 +102,7 @@ int part1(przypisz *przypiszy, int len, int width, int height)
     {
       for (int k = przypiszy[i].y; k < przypiszy[i].y + przypiszy[i].height; k++)
       {
-        paper[j][k]++;
+        tab[j][k]++;
       }
     }
   }
@@ -112,13 +112,14 @@ int part1(przypisz *przypiszy, int len, int width, int height)
   {
     for (int j = 0; j < height; j++)
     {
-      if (paper[i][j] > 1)
+      if (tab[i][j] > 1)
       {
-        ilosc++;
+        okrazenia++;
       }
     }
   }
-  return ilosc;
+  
+  return okrazenia;
 }
 
 int part2(przypisz *przypiszy, int len)
