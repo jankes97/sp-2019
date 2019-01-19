@@ -16,8 +16,8 @@ typedef struct przypisz
 void plik(void);
 
 int idz_do(char *string, char c);
-int part1(przypisz *przypiszy, int len, int width, int height);
-int part2(przypisz *przypiszy, int len);
+int part1(przypisz *przypisy, int len, int width, int height);
+int part2(przypisz *przypisy, int len);
 int ile_razy(przypisz c1, przypisz c2);
 
 int main()
@@ -30,7 +30,7 @@ void plik(void) //Pobieranie danych z pliku
   FILE *dane;
   char *line = NULL;
   size_t len = 0;
-  przypisz *przypiszy = malloc(sizeof(przypisz)); // Przyznanie pamieci w bajtach
+  przypisz *przypisy = malloc(sizeof(przypisz)); // Przyznanie pamieci w bajtach
   int przypiszLen = 0;
   int width = 0;
   int height = 0;
@@ -54,8 +54,8 @@ void plik(void) //Pobieranie danych z pliku
                          atoi(line + idz_do(line, 'x') + 1)};
 
     przypiszLen++;
-    przypiszy = realloc(przypiszy, sizeof(przypisz) * przypiszLen); //zmienia rozmiar przydzielonego wcześniej bloku pamięci wskazywanego
-    przypiszy[przypiszLen - 1] = przypisz;
+    przypisy = realloc(przypisy, sizeof(przypisz) * przypiszLen); //zmienia rozmiar przydzielonego wcześniej bloku pamięci wskazywanego
+    przypisy[przypiszLen - 1] = przypisz;
     if (przypisz.x + przypisz.width > width)
     {
       width = przypisz.x + przypisz.width;
@@ -66,9 +66,9 @@ void plik(void) //Pobieranie danych z pliku
     }
   }
 
-  printf("part 1: %d\n", part1(przypiszy, przypiszLen, width, height));
-  printf("part 2: %d\n", part2(przypiszy, przypiszLen));
-  free(przypiszy); //zwalnia blok pamięci
+  printf("part 1: %d\n", part1(przypisy, przypiszLen, width, height));
+  printf("part 2: %d\n", part2(przypisy, przypiszLen));
+  free(przypisy); //zwalnia blok pamięci
   fclose(dane);
   free(line);
   exit(EXIT_SUCCESS);
@@ -89,7 +89,7 @@ int idz_do(char *string, char c)
   return pos;
 }
 
-int part1(przypisz *przypiszy, int len, int width, int height)
+int part1(przypisz *przypisy, int len, int width, int height)
 {
   int tab[width][height]; //tablica wielowymiarowa
   int okrazenia = 0;
@@ -98,9 +98,9 @@ int part1(przypisz *przypiszy, int len, int width, int height)
   //Wypełnianie tablicy
   for (int i = 0; i < len; i++)
   {
-    for (int j = przypiszy[i].x; j < przypiszy[i].x + przypiszy[i].width; j++)
+    for (int j = przypisy[i].x; j < przypisy[i].x + przypisy[i].width; j++)
     {
-      for (int k = przypiszy[i].y; k < przypiszy[i].y + przypiszy[i].height; k++)
+      for (int k = przypisy[i].y; k < przypisy[i].y + przypisy[i].height; k++)
       {
         tab[j][k]++;
       }
@@ -122,15 +122,15 @@ int part1(przypisz *przypiszy, int len, int width, int height)
   return okrazenia;
 }
 
-int part2(przypisz *przypiszy, int len)
+int part2(przypisz *przypisy, int len)
 {
   int id = -1;
   for (int i = 0; i < len; i++)
   {
-    id = przypiszy[i].id;
+    id = przypisy[i].id;
     for (int j = 0; j < len; j++)
     {
-      if (i != j && ile_razy(przypiszy[i], przypiszy[j]))
+      if (i != j && ile_razy(przypisy[i], przypisy[j]))
       {
         id = -1;
       }
