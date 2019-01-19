@@ -38,13 +38,13 @@ void plik(void) //Pobieranie danych z pliku
   dane = fopen(INPUT, "r");
   if (dane == NULL)
   {
-    perror(INPUT);
+    perror(INPUT); //Wypisuje zrozumiały komunikat o błędzie i przechodzi do następnej linii
     exit(EXIT_FAILURE);
   }
 
   while (getline(&line, &len, dane) != -1)
   {
-    line[strcspn(line, "\r\n")] = 0;
+    line[strcspn(line, "\r\n")] = 0; // zlicza od początku ilość znaków w łańcuchu s które nie należą do niepasujace i zatrzymuje się na pierwszym pasującym którego nie liczy. Ilość zliczonych znaków jest zwracana.
 
     //pobiera liczbę w postaci ciągu znaków ASCII, a następnie zwraca jej wartość w formacie int.
     przypisz przypisz = {atoi(line + 1),
