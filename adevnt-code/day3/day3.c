@@ -14,78 +14,65 @@ A claim like #123 @ 3,2: 5x4 means that claim ID 123 specifies a rectangle 3 inc
 #include <string.h>
 #define INPUT "day3-1.txt"
 
-//slowa kluczowe, definiowanie typow i struktor
-typedef struct przypisz
+typedef struct Claim
 {
   int id;
   int x;
   int y;
   int width;
   int height;
-} przypisz;
+} Claim;
 
-void plik(void);
-
-int idz_do(char *string, char c);
-int part1(przypisz *przypisy, int len, int width, int height);
-int part2(przypisz *przypisy, int len);
-int ile_razy(przypisz c1, przypisz c2);
+void load_file(void);
+int advanceTo(char *string, char c);
+void perform_claim(Claim *claims, int len, int width, int height);
+void count_overlaps(int overlapping, int width, int height, int paper[width][height]);
+void overlap_id(Claim *claims, int len);
+int overlaps(Claim c1, Claim c2);
 
 int main()
 {
-  plik();
+  load_file();
 }
 
-void plik(void) //Pobieranie danych z pliku
+void load_file(void)
 {
-  FILE *dane;
+  FILE *fp;
+
   char *line = NULL;
   size_t len = 0;
-  przypisz *przypisy = malloc(sizeof(przypisz)); // Przyznanie pamieci w bajtach
-  int przypiszLen = 0;
+  Claim *claims = malloc(sizeof(Claim));
+  int claimLen = 0;
   int width = 0;
   int height = 0;
 
-  dane = fopen(INPUT, "r");
-  if (dane == NULL)
+  fp = fopen(INPUT, "r");
+  while (getline(&line, &len, fp) != -1)
   {
-    perror(INPUT); //Wypisuje zrozumiały komunikat o błędzie i przechodzi do następnej linii
-    exit(EXIT_FAILURE);
-  }
-
-  while (getline(&line, &len, dane) != -1)
-  {
-    line[strcspn(line, "\r\n")] = 0; // zlicza od początku ilość znaków w łańcuchu s które nie należą do niepasujace i zatrzymuje się na pierwszym pasującym którego nie liczy. Ilość zliczonych znaków jest zwracana.
-
-    //pobiera liczbę w postaci ciągu znaków ASCII, a następnie zwraca jej wartość w formacie int.
-    przypisz przypisz = {atoi(line + 1),
-                         atoi(line + idz_do(line, '@') + 1),
-                         atoi(line + idz_do(line, ',') + 1),
-                         atoi(line + idz_do(line, ':') + 2),
-                         atoi(line + idz_do(line, 'x') + 1)};
-
-    przypiszLen++;
-    przypisy = realloc(przypisy, sizeof(przypisz) * przypiszLen); //zmienia rozmiar przydzielonego wcześniej bloku pamięci wskazywanego
-    przypisy[przypiszLen - 1] = przypisz;
-    if (przypisz.x + przypisz.width > width)
+    line[strcspn(line, "\r\n")] = 0;
+    Claim claim = {atoi(line + 1), atoi(line + advanceTo(line, '@') + 1), atoi(line + advanceTo(line, ',') + 1), atoi(line + advanceTo(line, ':') + 2), atoi(line + advanceTo(line, 'x') + 1)};
+    claimLen++;
+    claims = realloc(claims, sizeof(Claim) * claimLen);
+    claims[claimLen - 1] = claim;
+    if (claim.x + claim.width > width)
     {
-      width = przypisz.x + przypisz.width;
+      width = claim.x + claim.width;
     }
-    if (przypisz.y + przypisz.height > height)
+    if (claim.y + claim.height > height)
     {
-      height = przypisz.y + przypisz.height;
+      height = claim.y + claim.height;
     }
   }
 
-  printf("part 1: %d\n", part1(przypisy, przypiszLen, width, height));
-  printf("part 2: %d\n", part2(przypisy, przypiszLen));
-  free(przypisy); //zwalnia blok pamięci
-  fclose(dane);
+  perform_claim(claims, claimLen, width, height);
+  overlap_id(claims, claimLen);
+  free(claims);
+  fclose(fp);
   free(line);
   exit(EXIT_SUCCESS);
 }
 
-int idz_do(char *string, char c)
+int advanceTo(char *string, char c)
 {
   int pos = -1;
   int len = strlen(string);
@@ -100,48 +87,48 @@ int idz_do(char *string, char c)
   return pos;
 }
 
-int part1(przypisz *przypisy, int len, int width, int height)
+void perform_claim(Claim *claims, int len, int width, int height)
 {
-  int tab[width][height]; //tablica wielowymiarowa
-  int okrazenia = 0;
-  memset(tab, 0, sizeof(tab)); //Wypełnia kolejne bajty w pamięci ustaloną wartością
-
-  //Wypełnianie tablicy
+  int paper[width][height];
+  memset(paper, 0, sizeof(paper));
   for (int i = 0; i < len; i++)
   {
-    for (int j = przypisy[i].x; j < przypisy[i].x + przypisy[i].width; j++)
+    for (int j = claims[i].x; j < claims[i].x + claims[i].width; j++)
     {
-      for (int k = przypisy[i].y; k < przypisy[i].y + przypisy[i].height; k++)
+      for (int k = claims[i].y; k < claims[i].y + claims[i].height; k++)
       {
-        tab[j][k]++;
+        paper[j][k]++;
       }
     }
   }
+  int overlapping = 0;
+  count_overlaps(overlapping, width, height, paper);
+}
 
-  //przeszukanie tablicy
+void count_overlaps(int overlapping, int width, int height, int paper[width][height])
+{
   for (int i = 0; i < width; i++)
   {
     for (int j = 0; j < height; j++)
     {
-      if (tab[i][j] > 1)
+      if (paper[i][j] > 1)
       {
-        okrazenia++;
+        overlapping++;
       }
     }
   }
-  
-  return okrazenia;
+  printf("Part 1: %d\n", overlapping);
 }
 
-int part2(przypisz *przypisy, int len)
+void overlap_id(Claim *claims, int len)
 {
   int id = -1;
   for (int i = 0; i < len; i++)
   {
-    id = przypisy[i].id;
+    id = claims[i].id;
     for (int j = 0; j < len; j++)
     {
-      if (i != j && ile_razy(przypisy[i], przypisy[j]))
+      if (i != j && overlaps(claims[i], claims[j]))
       {
         id = -1;
       }
@@ -151,13 +138,14 @@ int part2(przypisz *przypisy, int len)
       break;
     }
   }
-  return id;
+  printf("Part 2: %d\n", id);
 }
 
-int ile_razy(przypisz c1, przypisz c2)
+int overlaps(Claim c1, Claim c2)
 {
   int left1 = c1.x, right1 = c1.x + c1.width, top1 = c1.y, bot1 = c1.y + c1.height;
   int left2 = c2.x, right2 = c2.x + c2.width, top2 = c2.y, bot2 = c2.y + c2.height;
+
   if (left1 >= right2 || left2 >= right1)
   {
     return 0;
