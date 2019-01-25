@@ -23,7 +23,7 @@ typedef struct Claim
   int height;
 } Claim;
 
-void load_file(void);
+void load_data(void);
 int advanceTo(char *string, char c);
 void perform_claim(Claim *claims, int len, int width, int height);
 void count_overlaps(int overlapping, int width, int height, int paper[width][height]);
@@ -32,10 +32,10 @@ int overlaps(Claim c1, Claim c2);
 
 int main()
 {
-  load_file();
+  load_data();
 }
 
-void load_file(void)
+void load_data(void)
 {
   FILE *fp;
 
@@ -63,13 +63,8 @@ void load_file(void)
       height = claim.y + claim.height;
     }
   }
-
   perform_claim(claims, claimLen, width, height);
   overlap_id(claims, claimLen);
-  free(claims);
-  fclose(fp);
-  free(line);
-  exit(EXIT_SUCCESS);
 }
 
 int advanceTo(char *string, char c)
