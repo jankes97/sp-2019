@@ -85,7 +85,6 @@ int advanceTo(char *string, char c)
 void perform_claim(Claim *claims, int len, int width, int height)
 {
   int paper[width][height];
-  memset(paper, 0, sizeof(paper));
   for (int i = 0; i < len; i++)
   {
     for (int j = claims[i].x; j < claims[i].x + claims[i].width; j++)
