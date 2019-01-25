@@ -1,4 +1,4 @@
-### Struktury
+# Struktury
 
 Punkt:
 
