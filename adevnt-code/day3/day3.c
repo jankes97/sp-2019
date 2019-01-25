@@ -128,7 +128,6 @@ int overlaps(Claim c1, Claim c2)
 {
   int left1 = c1.x, right1 = c1.x + c1.width, top1 = c1.y, bot1 = c1.y + c1.height;
   int left2 = c2.x, right2 = c2.x + c2.width, top2 = c2.y, bot2 = c2.y + c2.height;
-
   if (left1 >= right2 || left2 >= right1)
   {
     return 0;
