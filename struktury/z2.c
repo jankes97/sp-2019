@@ -18,14 +18,6 @@ struct rect
   struct point ur; /* upper right */
 };
 
-struct point makepoint(int x, int y)
-{
-  struct point tmp;
-  tmp.x = x;
-  tmp.y = y;
-  return tmp;
-};
-
 int main()
 {
   printf("%d\n", disjointrect());
