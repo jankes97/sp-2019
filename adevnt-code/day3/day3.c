@@ -29,11 +29,9 @@ int main(){
 void load_data(int claimLen, int width, int height)
 {
   FILE *fp = fopen(INPUT, "r");
-
   char *line = NULL;
   size_t len = 0;
   Claim *claims = malloc(sizeof(Claim));
-  
   while (getline(&line, &len, fp) != -1){
     line[strcspn(line, "\r\n")] = 0;
     Claim claim = {atoi(line + 1), atoi(line + advanceTo(line, '@') + 1), atoi(line + advanceTo(line, ',') + 1), atoi(line + advanceTo(line, ':') + 2), atoi(line + advanceTo(line, 'x') + 1)};
