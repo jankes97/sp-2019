@@ -12,7 +12,7 @@ typedef struct Claim
   int height;
 } Claim;
 
-void load_data(void);
+void load_data(claimLen, width, height);
 int advanceTo(char *string, char c);
 void perform_claim(Claim *claims, int len, int width, int height);
 void count_overlaps(int overlapping, int width, int height, int paper[width][height]);
@@ -20,18 +20,19 @@ void overlaped_id(Claim *claims, int len);
 int overlaps(Claim c1, Claim c2);
 
 int main(){
-  load_data();
+  int claimLen = 0;
+  int width = 0;
+  int height = 0;
+  load_data(claimLen, width, height);
 }
 
-void load_data(void){
+void load_data(int claimLen, int width, int height)
+{
   FILE *fp;
 
   char *line = NULL;
   size_t len = 0;
   Claim *claims = malloc(sizeof(Claim));
-  int claimLen = 0;
-  int width = 0;
-  int height = 0;
 
   fp = fopen(INPUT, "r");
   while (getline(&line, &len, fp) != -1){
